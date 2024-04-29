@@ -36,7 +36,7 @@ app.post('/api/signup', async (req, res) => {
         console.log(save);
         // const expirationDate = new Date();
         // expirationDate.setTime(expirationDate.getTime() + (24 * 60 * 60 * 1000));
-        res.cookie("auth_token", token, cookieobj)
+        // res.cookie("auth_token", token, cookieobj)
         res.send({ token });
     } catch (error) {
         console.log(error.message);
@@ -89,7 +89,7 @@ app.post('/api/employee', fetchuser, async (req, res) => {
     try {
         console.log(req.user)
         const user = await Manager.findById(req.user.id).select("username")
-        const tosave = await new Employee({ ...req.body, managerusername : user.username });
+        const tosave = new Employee({ ...req.body, managerusername : user.username });
         const save = await tosave.save();
         console.log(save);
         res.send(save);
