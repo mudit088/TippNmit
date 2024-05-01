@@ -36,7 +36,7 @@ app.post('/api/signup', async (req, res) => {
         console.log(save);
         // const expirationDate = new Date();
         // expirationDate.setTime(expirationDate.getTime() + (24 * 60 * 60 * 1000));
-        res.cookie("auth_token", token, cookieobj)
+        // res.cookie("auth_token", token, cookieobj)
         res.send({ token });
     } catch (error) {
         console.log(error.message);
@@ -89,10 +89,51 @@ app.post('/api/employee', fetchuser, async (req, res) => {
     try {
         console.log(req.user)
         const user = await Manager.findById(req.user.id).select("username")
-        const tosave = await new Employee({ ...req.body, managerusername : user.username });
+        const tosave = new Employee({ ...req.body, managerusername: user.username });
         const save = await tosave.save();
         console.log(save);
         res.send(save);
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).send(error.message);
+    }
+})
+
+app.delete('/api/employee', async (req, res) => {
+    try {
+        console.log(req.body.id)
+        const result = await Employee.findByIdAndDelete(req.body.id);
+        if (!result) {
+            return res.status(404).send("Employee not found");
+        }
+        res.send({ result: "Deleted" });
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).send(error.message);
+    }
+})
+
+app.patch('/api/employee', async (req, res) => {
+    try {
+        // console.log(req.body)
+        const {id, ...detail} = req.body;
+        // console.log(detail)
+        const result = await Employee.findByIdAndUpdate(id, detail, { new: true });
+        console.log(result)
+        res.send(result);
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).send(error.message);
+    }
+})
+
+app.get('/api/employee', async (req, res) => {
+    try {
+        const username = req.header("username");
+        console.log(username)
+        const emps = await Employee.find({managerusername : username});
+        console.log(emps)
+        res.send(emps)
     } catch (error) {
         console.log(error.message);
         res.status(500).send(error.message);
