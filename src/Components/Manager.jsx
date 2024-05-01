@@ -41,6 +41,33 @@ const Manager = () => {
 
           <div className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
 
+
+            <div>
+              <div className="flex items-center justify-between">
+                <label htmlFor="" className="text-base font-medium text-gray-900">
+                  {' '}
+                  Business Type :
+                  {' '}
+                </label>
+              </div>
+              <div className="mt-2">
+                <select name="" id=""  className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50">
+                  <option value=""></option>
+                  <option value="">Full-Time</option>
+                  <option value="">Part-Time</option>
+                  <option value="">Temporary</option>
+                  <option value="">Interns</option>
+                  <option value="">Seasonal</option>
+                  <option value="">Leased</option>
+                </select>
+                {/* <input
+                  className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                  type="Text"
+                  placeholder="Enter the Type of your Business you have"
+                ></input> */}
+              </div>
+            </div>
+
             <h2 className="text-2xl font-bold leading-tight text-black">Sign up to your account</h2>
             <form action="#" method="POST" className="mt-8" onSubmit={handleSubmit}>
               <div className="space-y-5">
@@ -59,6 +86,7 @@ const Manager = () => {
                     ></input>
                   </div>
                 </div>
+
 
                 <div>
                   <div className="flex items-center justify-between">
