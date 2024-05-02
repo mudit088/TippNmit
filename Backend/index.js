@@ -29,7 +29,7 @@ const cookieobj = {
 
 app.post('/api/signup', async (req, res) => {
     try {
-        // console.log(req.body);
+        console.log(req.body);
         const tosave = new Manager({ ...req.body });
         const save = await tosave.save();
         const token = await genauthtoken(save);
@@ -38,9 +38,9 @@ app.post('/api/signup', async (req, res) => {
         // expirationDate.setTime(expirationDate.getTime() + (24 * 60 * 60 * 1000));
         // res.cookie("auth_token", token, cookieobj)
         res.send({ token });
-    } catch (error) {
-        console.log(error.message);
-        res.status(500).send(error.message);
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).send({error: err.message});
     }
 })
 
@@ -70,14 +70,14 @@ app.get('/api/login', async (req, res) => {
 
 app.post('/api/login', fetchuser, async (req, res) => {
     try {
-        console.log(req.user)
+        // console.log(req.user)
         const user = await Manager.findById(req.user.id).select("-password")
         console.log(user)
         if (!user) {
             return res.status(404).send("User not found");
         }
         res.cookie("auth_token", req.user.token, cookieobj)
-        // console.log(user)
+        console.log(user)
         res.send(user)
     } catch (error) {
         console.log(error.message);
@@ -87,7 +87,7 @@ app.post('/api/login', fetchuser, async (req, res) => {
 
 app.post('/api/employee', fetchuser, async (req, res) => {
     try {
-        console.log(req.user)
+        // console.log(req.user)
         const user = await Manager.findById(req.user.id).select("username")
         const tosave = new Employee({ ...req.body, managerusername: user.username });
         const save = await tosave.save();
@@ -130,7 +130,7 @@ app.patch('/api/employee', async (req, res) => {
 app.get('/api/employee', async (req, res) => {
     try {
         const username = req.header("username");
-        console.log(username)
+        // console.log(username)
         const emps = await Employee.find({managerusername : username});
         console.log(emps)
         res.send(emps)
