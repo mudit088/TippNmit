@@ -84,6 +84,7 @@ const Manager = () => {
                 </div>
 
                 <div>
+
                 <div className="flex items-center justify-between">
                   <label htmlFor="businesstype" className="text-base font-medium text-gray-900">
                     {' '}
@@ -110,21 +111,28 @@ const Manager = () => {
               </div>
 
                 {/* <div>
+
               <div className="flex items-center justify-between">
                 <label htmlFor="" className="text-base font-medium text-gray-900">
                   {' '}
-                  Date of Registration:
+                  Business Type :
                   {' '}
                 </label>
               </div>
               <div className="mt-2">
-                <input
-                  className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                  type="Date"
-                  placeholder="Enter the Type of your Business you have"
-                ></input>
+                <select name="" id=""  className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50">
+                  <option value=""></option>
+                  <option value="">Full-Time</option>
+                  <option value="">Part-Time</option>
+                  <option value="">Temporary</option>
+                  <option value="">Interns</option>
+                  <option value="">Seasonal</option>
+                  <option value="">Leased</option>
+                </select>
               </div>
-            </div> */}
+            </div>
+
+                
 
                 <div>
                   <div className="flex items-center justify-between">
