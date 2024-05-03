@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
 const Manager = () => {
+  const busitype = ['Hotel', 'Valets', 'Bars', 'Restaurants', 'Salons', 'Non-Profits'];
   const [user, setUser] = useState({ "ownername": "", "businessname": "", "businesstype": "", "email": "", "phone": "", "username": "", "password": "" });
 
   const handleChange = (e) => {
@@ -24,11 +25,12 @@ const Manager = () => {
 
     // expiryDate.setTime(expiryDate.getTime() + (24 * 60 * 60 * 1000)); // 24 hours from now
     // document.cookie = `auth-token=${json.token}; expires=${expiryDate.toUTCString()}`;
-    // if (json.token) {
-    //   localStorage.setItem("auth-token", json.token);
-    //   props.showAlert("Account Created","success");
-    //   navigate('/')
-    // } else {
+    if (json.token) {
+      localStorage.setItem("auth-token", json.token);
+      // props.showAlert("Account Created","success");
+      navigate('/')
+    } 
+    // else {
     //   props.showAlert("Invalid Details","danger")
     // }
   }
@@ -94,13 +96,8 @@ const Manager = () => {
                   </div>
                   <div className="mt-2">
                     <select name="businesstype" id="businesstype" className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50" onChange={handleChange} required>
-                      <option value="" selected>Choose...</option>
-                      <option>Hotel</option>
-                      <option>Valets</option>
-                      <option>Bars</option>
-                      <option>Restaurants</option>
-                      <option>Salons</option>
-                      <option>Non-Profits</option>
+                    <option id={0} value="" selected>Choose...</option>
+                        {busitype.map(id => <option key={id} value={id}>{id}</option>)}
                     </select>
                     {/* <input
                   className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
@@ -125,9 +122,9 @@ const Manager = () => {
                       placeholder="xyz@gmail.com"
                       onChange={handleChange}
                       name='email'
-                      pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-                      title="abc@email.com"
-                      required
+                      pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
+                        title="abcd@email.com"
+                        required
                     ></input>
                   </div>
                 </div>
@@ -147,7 +144,8 @@ const Manager = () => {
                       placeholder="Enter Phone Number"
                       onChange={handleChange}
                       name='phone'
-                      pattern="[0-9]{10}"
+                      minLength={10}
+                      maxLength={10}
                       title="10 Digits"
                       required
                     ></input>

@@ -55,7 +55,7 @@ const Employee = () => {
       email: '',
       phoneNumber: '',
       upiID: '',
-      image: null,
+      image: '',
     });
     setModal(false);
   };
@@ -173,7 +173,7 @@ const Employee = () => {
                         onChange={handleInputChange}
                         className="h-8 w-56 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
                         placeholder="Enter Email"
-                        pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                        pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
                         title="abcd@email.com"
                         required
                       />
@@ -204,14 +204,14 @@ const Employee = () => {
                         UPI ID
                       </label>
                       <input
-                        type="text"
+                        type="email"
                         id="upiID"
                         name="upiId"
                         value={formData.upiId}
                         onChange={handleInputChange}
                         className="h-8 w-56 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
                         placeholder="Enter UPI ID"
-                        pattern="[\w.-]+@[\w.-]+"
+                        pattern="[a-zA-Z0-9]+@[a-zA-Z]{2,64}"
                         title="username@provider"
                         required
                       />
