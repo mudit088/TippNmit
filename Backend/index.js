@@ -130,7 +130,7 @@ app.patch('/api/employee', async (req, res) => {
 app.get('/api/employee', async (req, res) => {
     try {
         const username = req.header("username");
-        // console.log(username)
+        console.log(username)
         const emps = await Employee.find({managerusername : username});
         console.log(emps)
         res.send(emps)

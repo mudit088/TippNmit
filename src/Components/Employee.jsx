@@ -4,6 +4,8 @@ import EmployeeCard from './EmployeeCard';
 const Employee = () => {
 
   const [mgr, setMgr] = useState({});
+  const [employees, setEmployees] = useState([]);
+
   const fetchmanager = async () => {
     let token;
     if (localStorage.getItem("auth-token")) {
@@ -22,7 +24,23 @@ const Employee = () => {
     });
     const json = await response.json();
     console.log(json)
-    setMgr(json)
+    if(json.username){
+      setMgr(json)
+      fetchemployee(json.username)
+    }
+  }
+
+  const fetchemployee = async (username) => {
+    const response = await fetch(`http://localhost:5000/api/employee/`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'username': username
+      },
+    });
+    const json = await response.json()
+    console.log(json)
+    setEmployees(json)
   }
 
   useEffect(() => {
@@ -30,7 +48,7 @@ const Employee = () => {
   }, [])
 
 
-  const emptype = ['Full-time', 'Part-time', 'Temporary', 'Interns', 'Seasonal', 'Leased'];
+  const emptype = ['Full-time', 'Part-time', 'Temporary', 'Intern', 'Seasonal', 'Leased'];
   const [modal, setModal] = useState(false);
   const [formData, setFormData] = useState({
     managerusername: '',
@@ -43,7 +61,6 @@ const Employee = () => {
     upiId: '',
     image: '',
   });
-  const [employees, setEmployees] = useState([]);
 
   const toggleModal = () => {
     setModal(!modal);
@@ -74,7 +91,6 @@ const Employee = () => {
     // Add new employee to the employees array
     const newEmployee = { ...formData };
     setEmployees([...employees, newEmployee]);
-
     // Reset form data and close modal
     setFormData({
       managerusername: mgr.username,
@@ -282,8 +298,8 @@ const Employee = () => {
 
         {/* Display EmployeeCards for each employee */}
         <div className="flex flex-wrap justify-center">
-          {employees.map((employee, index) => (
-            <EmployeeCard key={index} employeeData={employee} />
+          {employees.map((employee) => (
+            <EmployeeCard key={employee._id} employeeData={employee} />
           ))}
         </div>
       </div>

@@ -12,7 +12,7 @@ const employeeschema = new Schema({
     },
     employeetype: {
         type: String,
-        enum: ['Full-time', 'Part-time', 'Temporary', 'Interns', 'Seasonal', 'Leased'],
+        enum: ['Full-time', 'Part-time', 'Temporary', 'Intern', 'Seasonal', 'Leased'],
         require: true,
     },
     worktype: {
