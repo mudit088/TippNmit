@@ -44,7 +44,7 @@ const Home = () => {
   return (
     <div className='flex'>
       <div className='flex justify-center items-center mt-20 ml-36'>
-        <p className='text-5xl text-blue-800 font-semibold'>India's #1 end-to-end <br /> digital tipping platform <br /> for<span className='text-white'>.</span>
+        <p className='text-5xl text-blue-800 font-semibold'>India's #1 <br/> End-to-End <br /> Digital Tipping Platform <br /> For<span className='text-white'>.</span>
         <TypeAnimation
            className='text-green-400' sequence={[
               ' Hotels.',3000,
