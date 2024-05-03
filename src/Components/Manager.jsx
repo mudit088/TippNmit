@@ -43,7 +43,7 @@ const Manager = () => {
             <h2 className="text-2xl font-bold leading-tight text-black">Sign up to your account</h2>
 
             <form action="#" method="POST" className="mt-8" onSubmit={handleSubmit}>
-        
+
               <div className="space-y-5">
                 <div>
                   <label htmlFor="" className="text-base font-medium text-gray-900">
@@ -85,54 +85,30 @@ const Manager = () => {
 
                 <div>
 
-                <div className="flex items-center justify-between">
-                  <label htmlFor="businesstype" className="text-base font-medium text-gray-900">
-                    {' '}
-                    Business Type :
-                    {' '}
-                  </label>
-                </div>
-                <div className="mt-2">
-                  <select name="businesstype" id="businesstype" className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50" onChange={handleChange} required>
-                    <option value="" selected>Choose...</option>
-                    <option>Hotel</option>
-                    <option>Valets</option>
-                    <option>Bars</option>
-                    <option>Restaurants</option>
-                    <option>Salons</option>
-                    <option>Non-Profits</option>
-                  </select>
-                  {/* <input
+                  <div className="flex items-center justify-between">
+                    <label htmlFor="businesstype" className="text-base font-medium text-gray-900">
+                      {' '}
+                      Business Type :
+                      {' '}
+                    </label>
+                  </div>
+                  <div className="mt-2">
+                    <select name="businesstype" id="businesstype" className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50" onChange={handleChange} required>
+                      <option value="" selected>Choose...</option>
+                      <option>Hotel</option>
+                      <option>Valets</option>
+                      <option>Bars</option>
+                      <option>Restaurants</option>
+                      <option>Salons</option>
+                      <option>Non-Profits</option>
+                    </select>
+                    {/* <input
                   className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                   type="Text"
                   placeholder="Enter the Type of your Business you have"
                 ></input> */}
+                  </div>
                 </div>
-              </div>
-
-                {/* <div>
-
-              <div className="flex items-center justify-between">
-                <label htmlFor="" className="text-base font-medium text-gray-900">
-                  {' '}
-                  Business Type :
-                  {' '}
-                </label>
-              </div>
-              <div className="mt-2">
-                <select name="" id=""  className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50">
-                  <option value=""></option>
-                  <option value="">Full-Time</option>
-                  <option value="">Part-Time</option>
-                  <option value="">Temporary</option>
-                  <option value="">Interns</option>
-                  <option value="">Seasonal</option>
-                  <option value="">Leased</option>
-                </select>
-              </div>
-            </div>
-
-                
 
                 <div>
                   <div className="flex items-center justify-between">
@@ -150,6 +126,7 @@ const Manager = () => {
                       onChange={handleChange}
                       name='email'
                       pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                      title="abc@email.com"
                       required
                     ></input>
                   </div>
@@ -171,6 +148,7 @@ const Manager = () => {
                       onChange={handleChange}
                       name='phone'
                       pattern="[0-9]{10}"
+                      title="10 Digits"
                       required
                     ></input>
                   </div>
@@ -189,6 +167,7 @@ const Manager = () => {
                       onChange={handleChange}
                       name='username'
                       minLength={5}
+                      // title='Minimum length should be 5'
                       required
                     ></input>
                   </div>

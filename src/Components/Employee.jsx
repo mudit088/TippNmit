@@ -2,17 +2,17 @@ import React, { useState } from 'react';
 import EmployeeCard from './EmployeeCard';
 
 const Employee = () => {
+  const emptype = ['Full-time', 'Part-time', 'Temporary', 'Interns', 'Seasonal', 'Leased'];
   const [modal, setModal] = useState(false);
   const [formData, setFormData] = useState({
-    username: '',
-    fullName: '',
-    employeeType: '',
-    workType: '',
-    joiningDate: '',
+    name: '',
+    employeetype: '',
+    worktype: '',
+    dateofjoining: '',
     email: '',
-    phoneNumber: '',
-    upiID: '',
-    image: null, // Default image path
+    phone: '',
+    upiId: '',
+    image: '',
   });
   const [employees, setEmployees] = useState([]);
 
@@ -26,13 +26,19 @@ const Employee = () => {
       ...formData,
       [name]: value,
     });
+    console.log(formData)
   };
   const handleImageUpload = (e) => {
-    const file = e.target.files[0]; // Get the first file selected by the user
-    setFormData({
-      ...formData,
-      image: URL.createObjectURL(file), // Convert file to URL and update the image property
-    });
+    var reader = new FileReader();
+    // console.log(e.target.files[0])
+    reader.readAsDataURL(e.target.files[0]);
+    reader.onload = () => {
+      setFormData({ ...formData, image: reader.result });
+      console.log(formData.image)
+    }
+    // reader.onerror = error => {
+    //     console.log(`Error: ${error.message}`)
+    // }
   };
 
   const handleFormSubmit = () => {
@@ -42,24 +48,23 @@ const Employee = () => {
 
     // Reset form data and close modal
     setFormData({
-      username: '',
-      fullName: '',
-      employeeType: '',
+      name: '',
+      employeetype: '',
       workType: '',
       joiningDate: '',
       email: '',
       phoneNumber: '',
       upiID: '',
-      image:null ,
+      image: null,
     });
     setModal(false);
   };
 
   return (
     <div className="w-screen h-screen">
-      <div>
+      {/* <div>
         <p className="text-5xl text-green-600 font-semibold font-Titlefont m-4">Tip-Top</p>
-      </div>
+      </div> */}
       <div>
         <p className="text-3xl flex justify-center items-center text-black">Employee Registration</p>
       </div>
@@ -80,8 +85,8 @@ const Employee = () => {
                       Close
                     </button>
                   </div>
-                  <div>
-                    <div className="flex flex-col gap-4">
+                  <form onSubmit={handleFormSubmit}>
+                    {/* <div className="flex flex-col gap-4">
                       <label htmlFor="username" className="text-base font-medium text-gray-900">
                         Username
                       </label>
@@ -93,7 +98,7 @@ const Employee = () => {
                         onChange={handleInputChange}
                         className="h-8 w-56 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
                       />
-                    </div>
+                    </div> */}
                     <div className="flex flex-col gap-4">
                       <label htmlFor="fullName" className="text-base font-medium text-gray-900">
                         Full Name
@@ -101,11 +106,13 @@ const Employee = () => {
                       <input
                         type="text"
                         id="fullName"
-                        name="fullName"
-                        value={formData.fullName}
+                        name="name"
+                        value={formData.name}
                         onChange={handleInputChange}
                         className="h-8 w-56 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
                         placeholder="Enter your Name"
+                        minLength={5}
+                        required
                       />
                     </div>
                     <div className="flex flex-col gap-4">
@@ -114,110 +121,121 @@ const Employee = () => {
                       </label>
                       <select
                         id="employeeType"
-                        name="employeeType"
-                        value={formData.employeeType}
+                        name="employeetype"
                         onChange={handleInputChange}
                         className="h-8 w-56 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
+                        required
                       >
-                        <option value=""></option>
-                        <option value="Full-Time">Full-Time</option>
-                        <option value="Part-Time">Part-Time</option>
-                        <option value="Temporary">Temporary</option>
-                        <option value="Interns">Interns</option>
-                        <option value="Seasonal">Seasonal</option>
-                        <option value="Leased">Leased</option>
+                        <option id={0} value="" selected>Choose...</option>
+                        {emptype.map(id => <option key={id} value={id}>{id}</option>)}
                       </select>
                     </div>
                     <div className="flex flex-col gap-4">
-  <label htmlFor="workType" className="text-base font-medium text-gray-900">
-    Work Type
-  </label>
-  <input
-    type="text"
-    id="workType"
-    name="workType"
-    value={formData.workType}
-    onChange={handleInputChange}
-    className="h-8 w-56 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
-    placeholder="Enter Work Type"
-  />
-</div>
+                      <label htmlFor="workType" className="text-base font-medium text-gray-900">
+                        Work Type
+                      </label>
+                      <input
+                        type="text"
+                        id="workType"
+                        name="worktype"
+                        value={formData.worktype}
+                        onChange={handleInputChange}
+                        className="h-8 w-56 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
+                        placeholder="Enter Work Type"
+                        required
+                      />
+                    </div>
 
-<div className="flex flex-col gap-4">
-  <label htmlFor="joiningDate" className="text-base font-medium text-gray-900">
-    Joining Date
-  </label>
-  <input
-    type="date"
-    id="joiningDate"
-    name="joiningDate"
-    value={formData.joiningDate}
-    onChange={handleInputChange}
-    className="h-8 w-56 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
-  />
-</div>
+                    <div className="flex flex-col gap-4">
+                      <label htmlFor="joiningDate" className="text-base font-medium text-gray-900">
+                        Joining Date
+                      </label>
+                      <input
+                        type="date"
+                        id="joiningDate"
+                        name="dateofjoining"
+                        value={formData.dateofjoining}
+                        onChange={handleInputChange}
+                        className="h-8 w-56 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
+                        required
+                      />
+                    </div>
 
-<div className="flex flex-col gap-4">
-  <label htmlFor="email" className="text-base font-medium text-gray-900">
-    Email
-  </label>
-  <input
-    type="email"
-    id="email"
-    name="email"
-    value={formData.email}
-    onChange={handleInputChange}
-    className="h-8 w-56 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
-    placeholder="Enter Email"
-  />
-</div>
+                    <div className="flex flex-col gap-4">
+                      <label htmlFor="email" className="text-base font-medium text-gray-900">
+                        Email
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        className="h-8 w-56 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
+                        placeholder="Enter Email"
+                        pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                        title="abcd@email.com"
+                        required
+                      />
+                    </div>
 
-<div className="flex flex-col gap-4">
-  <label htmlFor="phoneNumber" className="text-base font-medium text-gray-900">
-    Phone Number
-  </label>
-  <input
-    type="text"
-    id="phoneNumber"
-    name="phoneNumber"
-    value={formData.phoneNumber}
-    onChange={handleInputChange}
-    className="h-8 w-56 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
-    placeholder="Enter Phone Number"
-  />
-</div>
+                    <div className="flex flex-col gap-4">
+                      <label htmlFor="phoneNumber" className="text-base font-medium text-gray-900">
+                        Phone Number
+                      </label>
+                      <input
+                        type="text"
+                        id="phoneNumber"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        className="h-8 w-56 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
+                        placeholder="Enter Phone Number"
+                        maxLength={10}
+                        minLength={10}
+                        // pattern="[0-9]{10}"
+                        title="10 Digits"
+                        required
+                      />
+                    </div>
 
-<div className="flex flex-col gap-4">
-  <label htmlFor="upiID" className="text-base font-medium text-gray-900">
-    UPI ID
-  </label>
-  <input
-    type="text"
-    id="upiID"
-    name="upiID"
-    value={formData.upiID}
-    onChange={handleInputChange}
-    className="h-8 w-56 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
-    placeholder="Enter UPI ID"
-  />
-</div>
+                    <div className="flex flex-col gap-4">
+                      <label htmlFor="upiID" className="text-base font-medium text-gray-900">
+                        UPI ID
+                      </label>
+                      <input
+                        type="text"
+                        id="upiID"
+                        name="upiId"
+                        value={formData.upiId}
+                        onChange={handleInputChange}
+                        className="h-8 w-56 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
+                        placeholder="Enter UPI ID"
+                        pattern="[\w.-]+@[\w.-]+"
+                        title="username@provider"
+                        required
+                      />
+                    </div>
 
-<div className="flex flex-col gap-4">
-  <label htmlFor="image" className="text-base font-medium text-gray-900">
-    Image upload
-  </label>
-  <input
-     type="file"
-      id="image"
-      name="image"
-      onChange={handleImageUpload}
-      className="h-8 w-56 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
-                        />
-</div>
-<button onClick={handleFormSubmit} className="h-8 w-28 rounded-md border-2 text-sm border-gray-300 mb-3 bg-teal-500">
+                    <div className="flex flex-col gap-4">
+                      <label htmlFor="image" className="text-base font-medium text-gray-900">
+                        Image upload
+                      </label>
+                      <input
+                        type="file"
+                        id="image"
+                        accept="image/*"
+                        name="image"
+                        onChange={handleImageUpload}
+                        className="h-8 w-56 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
+                        title='Image Only'
+                        required
+                      />
+                    </div>
+                    <button className="h-8 w-28 rounded-md border-2 text-sm border-gray-300 mb-3 bg-teal-500">
                       Submit
                     </button>
-                  </div>
+                  </form>
                 </div>
               </div>
             )}
