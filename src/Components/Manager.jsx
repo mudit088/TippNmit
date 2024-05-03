@@ -95,8 +95,8 @@ const Manager = () => {
                     </label>
                   </div>
                   <div className="mt-2">
-                    <select name="businesstype" id="businesstype" className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50" onChange={handleChange} required>
-                    <option id={0} value="" selected>Choose...</option>
+                    <select name="businesstype" id="businesstype" className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50" onChange={handleChange} defaultValue={""} required>
+                    <option id={0} value="">Choose...</option>
                         {busitype.map(id => <option key={id} value={id}>{id}</option>)}
                     </select>
                     {/* <input
