@@ -5,9 +5,9 @@ const Employee = () => {
 
   const [mgr, setMgr] = useState({});
   const [employees, setEmployees] = useState([]);
-
+  
   const fetchmanager = async () => {
-    let token;
+    let token = "";
     if (localStorage.getItem("auth-token")) {
       token = localStorage.getItem("auth-token")
       console.log(token)
@@ -19,12 +19,12 @@ const Employee = () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'auth-token': `${token}`
+        'auth-token': token
       },
     });
     const json = await response.json();
     console.log(json)
-    if(json.username){
+    if (json.username) {
       setMgr(json)
       fetchemployee(json.username)
     }
@@ -72,8 +72,9 @@ const Employee = () => {
       ...formData,
       [name]: value,
     });
-    console.log(formData)
+    // console.log(formData)
   };
+
   const handleImageUpload = (e) => {
     var reader = new FileReader();
     // console.log(e.target.files[0])
@@ -87,7 +88,28 @@ const Employee = () => {
     // }
   };
 
-  const handleFormSubmit = () => {
+  const handleFormSubmit = async (e) => {
+    e.preventDefault()
+    let token = "";
+    if (localStorage.getItem("auth-token")) {
+      token = localStorage.getItem("auth-token")
+      console.log(token)
+    }
+    else {
+      navigate('/login')
+    }
+    console.log(token)
+    const response = await fetch(`http://localhost:5000/api/employee`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'auth-token': `${token}`
+      },
+      body: JSON.stringify({...formData}),
+    });
+    const json = await response.json()
+    console.log(json)
+
     // Add new employee to the employees array
     const newEmployee = { ...formData };
     setEmployees([...employees, newEmployee]);
@@ -299,7 +321,7 @@ const Employee = () => {
         {/* Display EmployeeCards for each employee */}
         <div className="flex flex-wrap justify-center">
           {employees.map((employee) => (
-            <EmployeeCard key={employee._id} employeeData={employee} />
+            <EmployeeCard key={employee.upiId} employeeData={employee} />
           ))}
         </div>
       </div>

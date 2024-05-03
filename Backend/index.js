@@ -85,7 +85,7 @@ app.post('/api/login', fetchuser, async (req, res) => {
     }
 })
 
-app.post('/api/employee', fetchuser, async (req, res) => {
+app.put('/api/employee', fetchuser, async (req, res) => {
     try {
         // console.log(req.user)
         const user = await Manager.findById(req.user.id).select("username")
