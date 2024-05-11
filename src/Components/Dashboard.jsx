@@ -149,8 +149,8 @@ const Dashboard = () => {
 
   return (
     <div>
-      {/* <QRCode size={200} id='qrcode' bgcolor="white" fgcolor="black" value={qrURL}/> */}
       {/* {mgr.businessname && ( */}
+      <QRCode size={200} id='qrcode' bgcolor="white" fgcolor="black" value={`${qrURL}/client/${mgr.username}`}/>
         <div className="w-screen h-screen">
           {/* manager details */}
           <p className="text-3xl flex justify-center items-center text-black"> mgr.businessname </p>
