@@ -18,7 +18,7 @@ const Navbar = () => {
   }
 
   return (
-    <div className='flex justify-between items-center bg-green-50 fixed w-full border-b-2 border-green-200'>
+    <div className='flex justify-between items-center bg-green-50 fixed w-full border-b-2 border-green-200 z-10'>
       <div >
         <h1 className='text-5xl font-Titlefont m-1 p-2 text-green-600'>
           <Link to='/'>
