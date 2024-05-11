@@ -208,7 +208,7 @@ const Dashboard = () => {
                 <img src="/employee.png" alt="Add employee" className="h-28 pl-2" />
               </div> */}
             {modal && (
-              <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 h-full">
+              <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 h-full z-20">
                 <div className="bg-teal-50 rounded-lg p-5">
                   <div className="flex justify-end">
                     <button onClick={toggleModal} className="bg-red-200 mb-4 px-2 py-1 rounded-lg">
