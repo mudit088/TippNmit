@@ -8,6 +8,7 @@ import {
   Routes,
   Route
 } from "react-router-dom";
+import Login from './Components/Login'
 
 function App() {
   
@@ -26,6 +27,7 @@ function App() {
 
         </Routes>
       </Router>
+      <Login/>
   </div>
   )
 }

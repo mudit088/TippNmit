@@ -19,9 +19,9 @@ const Dashboard = () => {
       token = localStorage.getItem("auth-token")
       console.log(token)
     }
-    else {
-      navigate('/login')
-    }
+    // else {
+    //   navigate('/login')
+    // }
     try {
       setError("");
       const response = await fetch(`http://localhost:5000/api/login`, {
@@ -58,11 +58,11 @@ const Dashboard = () => {
   const setQR = () => {
     const url = window.location.href;
     const nrwurl = url.substring(0, url.length - location.pathname.length);
-    const data = `${nrwurl}/client/${mgr.username}`;
+    const data = `${nrwurl}/client/tulsyan`;
     if (data && canvasRef.current) {
       QRCode.toCanvas(canvasRef.current, data, {
         width: 200,
-        margin: 0,
+        margin: 1,
         color: {
           dark: "#000000",
           light: "#ffffff"
@@ -127,9 +127,9 @@ const Dashboard = () => {
       token = localStorage.getItem("auth-token")
       console.log(token)
     }
-    else {
-      navigate('/login')
-    }
+    // else {
+    //   navigate('/login')
+    // }
     console.log(token)
     const response = await fetch(`http://localhost:5000/api/employee`, {
       method: 'PUT',
@@ -178,11 +178,13 @@ const Dashboard = () => {
       <button onClick={handleQRDownload}>Download QR</button>
       <div className="w-screen h-screen">
         {/* manager details */}
-        <p className="text-3xl flex justify-center items-center text-black"> mgr.businessname </p>
-        <p className="text-3xl flex justify-center items-center text-black"> mgr.businesstype </p>
-        <p className="text-3xl flex justify-center items-center text-black"> mgr.ownername </p>
+        <div className='flex justify-center items-center mt-10 px-4'>
+        <p className="text-3xl flex justify-center pr-8 items-center text-blue-800"> mgr.businessname </p>
+        <p className="text-3xl flex justify-center pr-8 items-center text-blue-800"> mgr.businesstype </p>
+        <p className="text-3xl flex justify-center pr-8 items-center text-blue-800"> mgr.ownername </p>
+        </div>
         <div>
-          <p className="text-3xl flex justify-center items-center text-black">Employee Registration</p>
+          <p className="text-3xl mt-8 flex justify-center items-center text-teal-500">Employee Registration</p>
         </div>
         <div className="mt-20 float-start ml-10">
           <section className="flex justify-center items-center flex-col 0">
