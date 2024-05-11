@@ -5,6 +5,7 @@ const express = require('express')
 const cors = require('cors')
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const bodyParser = require('body-parser');
 
 const Manager = require('./modals/manager')
 const Employee = require('./modals/employee');
@@ -14,8 +15,10 @@ const secretKey = process.env.SECTET_KEY;
 const app = express()
 const port = process.env.PORT;
 
-app.use(express.json())
+// app.use(express.json())
 app.use(cors())
+app.use(bodyParser.json({ limit: '10mb' }));
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 
 const genauthtoken = async (user) => {
     const token = await jwt.sign({ id: user._id.toString() }, secretKey);
@@ -87,7 +90,7 @@ app.post('/api/login', fetchuser, async (req, res) => {
     }
 })
 
-app.put('/api/employee', fetchuser, async (req, res) => {
+app.post('/api/employee', fetchuser, async (req, res) => {
     try {
         // console.log(req.user)
         const user = await Manager.findById(req.user.id).select("username")

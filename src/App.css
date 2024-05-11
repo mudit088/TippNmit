@@ -1,0 +1,7 @@
+.qr-btn{
+    z-index: -1;
+}
+.qr-box:hover .qr-btn{
+    z-index: 1;
+    transition: 0.5s all ease-in-out;
+}
