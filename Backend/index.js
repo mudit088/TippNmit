@@ -47,7 +47,9 @@ app.post('/api/signup', async (req, res) => {
 app.get('/api/login', async (req, res) => {
     try {
         let success = false;
-        const { username, password } = req.body;
+        const username = req.header("username");
+        const password = req.header("password");
+        console.log(req.header)
         let user = await Manager.findOne({ username });
         if (!user) {
             return res.status(400).json({ success, "errors": "User does not exist" });

@@ -3,12 +3,13 @@ import Dashboard from './Components/Dashboard'
 import Home from './Components/Home'
 import SignUp from './Components/SignUp'
 import Navbar from './Components/Navbar'
+import Login from './Components/Login'
+
 import {
   BrowserRouter as Router,
   Routes,
   Route
 } from "react-router-dom";
-import Login from './Components/Login'
 
 function App() {
   
@@ -25,9 +26,10 @@ function App() {
 
           <Route exact path="/dashboard" element={<Dashboard/>} />
 
+          <Route exact path="/login" element={<Login/>} />
+
         </Routes>
       </Router>
-      <Login/>
   </div>
   )
 }

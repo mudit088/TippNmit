@@ -15,7 +15,7 @@ const Navbar = () => {
 
         <ul>
             <li>
-                <a href="" className='text-xl p-2 pl-6' >Login</a>
+                <a href="/login" className='text-xl p-2 pl-6' >Login</a>
             </li>
         </ul>
       </div>
