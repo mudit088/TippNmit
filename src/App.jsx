@@ -1,7 +1,7 @@
 import './App.css'
-import Employee from './Components/Employee'
+import Dashboard from './Components/Dashboard'
 import Home from './Components/Home'
-import Manager from './Components/Manager'
+import SignUp from './Components/SignUp'
 import Navbar from './Components/Navbar'
 import {
   BrowserRouter as Router,
@@ -20,9 +20,9 @@ function App() {
           
           <Route exact path="/" element={<Home/>} />
 
-          <Route exact path="/signup" element={<Manager/>} />
+          <Route exact path="/signup" element={<SignUp/>} />
 
-          <Route exact path="/dashboard" element={<Employee/>} />
+          <Route exact path="/dashboard" element={<Dashboard/>} />
 
         </Routes>
       </Router>

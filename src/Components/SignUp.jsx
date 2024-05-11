@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from "react-router-dom";
 
-const Manager = () => {
+const SignUp = () => {
   const busitype = ['Hotel', 'Valets', 'Bars', 'Restaurants', 'Salons', 'Non-Profits'];
   const [user, setUser] = useState({ "ownername": "", "businessname": "", "businesstype": "", "email": "", "phone": "", "username": "", "password": "" });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -28,8 +30,8 @@ const Manager = () => {
     if (json.token) {
       localStorage.setItem("auth-token", json.token);
       // props.showAlert("Account Created","success");
-      navigate('/')
-    } 
+      navigate('/dashboard')
+    }
     // else {
     //   props.showAlert("Invalid Details","danger")
     // }
@@ -96,8 +98,8 @@ const Manager = () => {
                   </div>
                   <div className="mt-2">
                     <select name="businesstype" id="businesstype" className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50" onChange={handleChange} defaultValue={""} required>
-                    <option id={0} value="">Choose...</option>
-                        {busitype.map(id => <option key={id} value={id}>{id}</option>)}
+                      <option id={0} value="">Choose...</option>
+                      {busitype.map(id => <option key={id} value={id}>{id}</option>)}
                     </select>
                     {/* <input
                   className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
@@ -123,8 +125,8 @@ const Manager = () => {
                       onChange={handleChange}
                       name='email'
                       pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
-                        title="abcd@email.com"
-                        required
+                      title="abcd@email.com"
+                      required
                     ></input>
                   </div>
                 </div>
@@ -209,4 +211,4 @@ const Manager = () => {
   )
 }
 
-export default Manager
+export default SignUp

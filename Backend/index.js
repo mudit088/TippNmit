@@ -12,7 +12,7 @@ const fetchuser = require('./middleware/fetchuser');
 
 const secretKey = process.env.SECTET_KEY;
 const app = express()
-const port = 5000
+const port = process.env.PORT;
 
 app.use(express.json())
 app.use(cors())
