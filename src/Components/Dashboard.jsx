@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import EmployeeCard from './EmployeeCard';
 import { useNavigate, useLocation } from "react-router-dom";
 import QRCode from "qrcode";
-import axios from 'axios';
+import Client from './Client';
 
 const Dashboard = () => {
 

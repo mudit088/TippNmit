@@ -1,4 +1,5 @@
 import React from 'react'
+import Dashboard from './Dashboard';
 
 const Client = ({ employeeDataa }) => {
     const { name, employeetype, worktype, email, phone, upiId, image } = employeeDataa;
