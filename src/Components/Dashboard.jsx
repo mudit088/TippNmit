@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import EmployeeCard from './EmployeeCard';
 import { useNavigate, useLocation } from "react-router-dom";
 import QRCode from "qrcode";
-// require('dotenv').config();
+import axios from 'axios';
 
 const Dashboard = () => {
 
@@ -22,9 +22,9 @@ const Dashboard = () => {
       token = localStorage.getItem("auth-token")
       console.log(token)
     }
-    else {
-      navigate('/login')
-    }
+    // else {
+    //   navigate('/login')
+    // }
     try {
       setError("");
       const response = await fetch(`http://localhost:5000/api/login`, {
@@ -394,6 +394,14 @@ const Dashboard = () => {
             <EmployeeCard key={employee.upiId} employeeData={employee} handleDelete={handleDelete} />
           ))) : (<div className='text-3xl text-red-500 font-semibold h-full'>No Employees added yet.</div>)}
         </div>
+        <div>
+      
+        
+          <Client key={employees.upiId} employeeDataa={employees} />
+       
+      
+      
+    </div>
       </div>
       {/* )} */}
     </div>
