@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import EmployeeCard from './EmployeeCard';
 import { useNavigate, useLocation } from "react-router-dom";
 import QRCode from "qrcode";
-import axios from 'axios';
+// require('dotenv').config();
 
 const Dashboard = () => {
 
@@ -13,6 +13,8 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const canvasRef = useRef();
+  // const serverURL = process.env.REACT_APP_SERVERURL;
+  // console.log(serverURL);
 
   const fetchmanager = async () => {
     let token = "";
@@ -174,6 +176,18 @@ const Dashboard = () => {
     }
   };
 
+  const handleDelete = async (UPIid) => {
+    const response = await fetch(`http://localhost:5000/api/employee/`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({UPIid}),
+    });
+    const json = await response.json()
+    console.log(json)
+  }
+
   return (
     <div className='overflow-x-hidden pt-[10vh] min-h-[100vh]'>
       {/* {mgr.businessname && ( */}
@@ -191,14 +205,14 @@ const Dashboard = () => {
           <div className='flex flex-col items-center justify-center relative qr-box'>
             <canvas ref={canvasRef} className='qr-code border-green-500 border-4 border-dashed mb-2' />
             <button className='bg-teal-500 p-2 rounded-lg qr-btn absolute' onClick={handleQRDownload}>
-            <i className="fa-solid fa-download" style={{color: "#000000"}}/> QR
+              <i className="fa-solid fa-download" style={{ color: "#000000" }} /> QR
             </button>
           </div>
         </div>
         <div className='flex my-5 items-center justify-center gap-8'>
           <p className="text-4xl font-bold flex justify-center items-center underline text-teal-500">Employee Registration</p>
           <button onClick={toggleModal} className="bg-teal-500 p-2 rounded-lg">
-          <i className="fa-solid fa-user-plus" style={{color: "#000000"}} /> Employee
+            <i className="fa-solid fa-user-plus" style={{ color: "#000000" }} /> Employee
           </button>
         </div>
         {/* <div className="mt-20 float-start ml-10"> */}
@@ -377,7 +391,7 @@ const Dashboard = () => {
         {/* Display EmployeeCards for each employee */}
         <div className="flex flex-wrap justify-center">
           {employees.length !== 0 ? (employees.map((employee) => (
-            <EmployeeCard key={employee.upiId} employeeData={employee} />
+            <EmployeeCard key={employee.upiId} employeeData={employee} handleDelete={handleDelete} />
           ))) : (<div className='text-3xl text-red-500 font-semibold h-full'>No Employees added yet.</div>)}
         </div>
       </div>

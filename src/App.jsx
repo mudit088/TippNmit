@@ -4,6 +4,7 @@ import Home from './Components/Home'
 import SignUp from './Components/SignUp'
 import Navbar from './Components/Navbar'
 import Login from './Components/Login'
+// import ('dotenv').config();
 
 import {
   BrowserRouter as Router,
@@ -12,7 +13,7 @@ import {
 } from "react-router-dom";
 
 function App() {
-  
+  // console.log(process.env.REACT_APP_SERVERURL)
 
   return (
   <div>

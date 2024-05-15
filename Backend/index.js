@@ -106,8 +106,9 @@ app.post('/api/employee', fetchuser, async (req, res) => {
 
 app.delete('/api/employee', async (req, res) => {
     try {
-        console.log(req.body.id)
-        const result = await Employee.findByIdAndDelete(req.body.id);
+        console.log(req.body.UPIid)
+        const upiid = req.body.UPIid;
+        const result = await Employee.findOneAndDelete({upiId : upiid});
         if (!result) {
             return res.status(404).send("Employee not found");
         }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const EmployeeCard = ({ employeeData }) => {
+const EmployeeCard = ({ employeeData ,handleDelete}) => {
   const { name, employeetype, worktype, dateofjoining, email, phone, upiId, image } = employeeData;
   const [reqDate, setReqDare] = useState('');
 
@@ -21,7 +21,7 @@ const EmployeeCard = ({ employeeData }) => {
 
   return (
     <div className=" shadow-md rounded-lg bg-teal-100 overflow-hidden m-4 w-80 relative">
-      <button className="bg-red-500 p-1 rounded-lg absolute top-3 right-3">
+      <button className="bg-red-500 p-1 rounded-lg absolute top-3 right-3" onClick={()=>{handleDelete(upiId)}}>
         <i className="fa-solid fa-trash" style={{ color: "#000000" }} />
       </button>
       <div className="p-4">
