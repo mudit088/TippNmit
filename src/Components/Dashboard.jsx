@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import EmployeeCard from './EmployeeCard';
 import { useNavigate, useLocation } from "react-router-dom";
 import QRCode from "qrcode";
-import Client from './Client';
 
 const Dashboard = () => {
 
@@ -94,6 +93,7 @@ const Dashboard = () => {
     email: '',
     phone: '',
     upiId: '',
+    upiname: '',
     image: '',
   });
 
@@ -158,6 +158,7 @@ const Dashboard = () => {
       email: '',
       phoneNumber: '',
       upiID: '',
+      upiname: '',
       image: '',
     });
     setModal(false);
@@ -196,8 +197,8 @@ const Dashboard = () => {
         <div className='mt-4 px-4 flex items-center justify-evenly flex-wrap gap-5'>
           <div className='flex justify-center flex-col items-center'>
             <p className="text-5xl flex justify-center pr-8 font-semibold items-center font-mono gap-3 text-blue-800">
-              <span>{mgr.businessname}</span>
               <span className='bg-red-500 text-3xl px-4 py-1 rounded-3xl'> {mgr.businesstype} </span>
+              <span>{mgr.businessname}</span>
             </p>
             {/* <p className="text-5xl flex justify-center pr-8 items-center text-blue-800"> {mgr.businesstype} </p> */}
             <p className="text-5xl flex justify-center pr-8 items-center text-blue-800">Manager : {mgr.ownername} </p>
@@ -363,6 +364,22 @@ const Dashboard = () => {
                     </div>
 
                     <div className="flex flex-col gap-4">
+                      <label htmlFor="upiname" className="text-base font-medium text-gray-900">
+                        UPI Name
+                      </label>
+                      <input
+                        type="text"
+                        id="upiname"
+                        name="upiname"
+                        value={formData.upiname}
+                        onChange={handleInputChange}
+                        className="h-8 w-56 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
+                        placeholder="Enter your Name in UPI"
+                        required
+                      />
+                    </div>
+
+                    <div className="flex flex-col gap-4">
                       <label htmlFor="image" className="text-base font-medium text-gray-900">
                         Image upload
                       </label>
@@ -395,12 +412,6 @@ const Dashboard = () => {
           ))) : (<div className='text-3xl text-red-500 font-semibold h-full'>No Employees added yet.</div>)}
         </div>
         <div>
-      
-        
-          <Client key={employees.upiId} employeeDataa={employees} />
-       
-      
-      
     </div>
       </div>
       {/* )} */}

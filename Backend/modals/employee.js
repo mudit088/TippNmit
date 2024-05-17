@@ -53,6 +53,10 @@ const employeeschema = new Schema({
         unique : true,
         require: true
     },
+    upiname: {
+        type: String,
+        require: true
+    },
     image: {
         //todo
         type: String,

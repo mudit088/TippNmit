@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 const EmployeeCard = ({ employeeData, handleDelete }) => {
-  const { name, employeetype, worktype, dateofjoining, email, phone, upiId, image } = employeeData;
+  const { name, employeetype, worktype, dateofjoining, email, phone, upiId, upiname, image } = employeeData;
   const [reqDate, setReqDare] = useState('');
   const [delCover, setDelCover] = useState(false);
   const [display, setDisplay] = useState(true);
@@ -52,6 +52,7 @@ const EmployeeCard = ({ employeeData, handleDelete }) => {
           <p className="text-gray-700 mb-2">Joining Date: {reqDate}</p>
           <p className="text-gray-700 mb-2">Email: {email}</p>
           <p className="text-gray-700 mb-2">Phone: {phone}</p>
+          <p className="text-gray-700 mb-2">UPI Name: {upiname}</p>
           <p className="text-gray-700 mb-2">UPI ID: {upiId}</p>
         </div>
       </div>)}
