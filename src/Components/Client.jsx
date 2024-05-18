@@ -25,7 +25,7 @@ const Client = () => {
                 <i className="fa-solid fa-trash" style={{ color: "#000000" }} /> {" "} {" "}Delete
               </span>
             </button>
-            <button className="bg-green-500 px-1 py-2 rounded-xl" onClick={() => { setDelCover(false) }}>
+            <button className="bg-green-500 px-1 py-2 rounded-lg" onClick={() => { setDelCover(false) }}>
               <span className='text-xl'>
                 <i className="fa-solid fa-xmark" style={{ color: "#000000" }} /> {" "} {" "}Cancel
               </span>
