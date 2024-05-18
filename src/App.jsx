@@ -11,6 +11,7 @@ import {
   Routes,
   Route
 } from "react-router-dom";
+import Client from './Components/Client'
 
 function App() {
   // console.log(process.env.REACT_APP_SERVERURL)
@@ -31,6 +32,7 @@ function App() {
 
         </Routes>
       </Router>
+      <Client/>
   </div>
   )
 }

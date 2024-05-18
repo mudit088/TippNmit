@@ -192,7 +192,7 @@ const Dashboard = () => {
   return (
     <div className='overflow-x-hidden pt-[10vh] min-h-[100vh]'>
       {/* {mgr.businessname && ( */}
-      <div className="w-screen h-screen">
+      <div className="w-screen h-full">
         {/* manager details */}
         <div className='mt-4 px-4 flex items-center justify-evenly flex-wrap gap-5'>
           <div className='flex justify-center flex-col items-center'>
