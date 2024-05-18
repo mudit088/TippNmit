@@ -4,6 +4,7 @@ import Home from './Components/Home'
 import SignUp from './Components/SignUp'
 import Navbar from './Components/Navbar'
 import Login from './Components/Login'
+import Client from './Components/Client'
 // import ('dotenv').config();
 
 import {
@@ -11,7 +12,6 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import Client from './Components/Client'
 
 function App() {
   // console.log(process.env.REACT_APP_SERVERURL)
@@ -30,9 +30,10 @@ function App() {
 
           <Route exact path="/login" element={<Login/>} />
 
+          <Route exact path="/client/:username" element={<Client/>} />
+
         </Routes>
       </Router>
-      <Client/>
   </div>
   )
 }

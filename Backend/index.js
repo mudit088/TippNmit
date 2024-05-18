@@ -43,7 +43,7 @@ app.post('/api/signup', async (req, res) => {
         res.send({ token });
     } catch (err) {
         console.log(err.message);
-        res.status(500).send({error: err.message});
+        res.status(500).send({ error: err.message });
     }
 })
 
@@ -108,7 +108,7 @@ app.delete('/api/employee', async (req, res) => {
     try {
         console.log(req.body.UPIid)
         const upiid = req.body.UPIid;
-        const result = await Employee.findOneAndDelete({upiId : upiid});
+        const result = await Employee.findOneAndDelete({ upiId: upiid });
         if (!result) {
             return res.status(404).send("Employee not found");
         }
@@ -122,7 +122,7 @@ app.delete('/api/employee', async (req, res) => {
 app.patch('/api/employee', async (req, res) => {
     try {
         // console.log(req.body)
-        const {id, ...detail} = req.body;
+        const { id, ...detail } = req.body;
         // console.log(detail)
         const result = await Employee.findByIdAndUpdate(id, detail, { new: true });
         console.log(result)
@@ -137,9 +137,24 @@ app.get('/api/employee', async (req, res) => {
     try {
         const username = req.header("username");
         console.log(username)
-        const emps = await Employee.find({managerusername : username});
+        const emps = await Employee.find({ managerusername: username });
         console.log(emps)
         res.send(emps)
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).send(error.message);
+    }
+})
+
+app.get('/api/clientpage', async (req, res) => {
+    try {
+        const username = req.header("username");
+        console.log(username)
+        const mgr = await Manager.findOne({ username: username }, { _id: 0, password: 0, __v: 0 })
+        const emps = await Employee.find({ managerusername: username },{_id:0,__v:0});
+        // const {ownername,businessname,businesstype,email,phone} = mgr;
+        const result = { mgr,emps }
+        res.send(result)
     } catch (error) {
         console.log(error.message);
         res.status(500).send(error.message);
