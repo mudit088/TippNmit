@@ -45,7 +45,7 @@ const Client = () => {
           <p className="text-gray-700 mb-2">Phone: {}</p>
           <p className="text-gray-700 mb-2">UPI Name: {}</p>
           <p className="text-gray-700 mb-2">UPI ID: {}</p>
-          <button className='ml-20 p-2 px-8 border-2 border-teal-400 rounded-xl hover:scale-110 duration-300 bg-teal-200'>Tip</button>
+          <button className='ml-20 p-2 px-8 border-2 border-teal-400 rounded-xl hover:scale-105 duration-300 bg-teal-200'>Tip</button>
         </div>
       </div>)}
     
