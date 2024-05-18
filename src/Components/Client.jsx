@@ -15,7 +15,7 @@ const Client = () => {
       <p className='text-blue-600 text-2xl pt-10 font-semibold'>HAPPY THANKSGIVING</p>
     </div>
 
-    <div className='mt-28 ml-10'>
+    <div className='mt-28 ml-9'>
       { display && (<div className=" shadow-md rounded-lg bg-teal-100 overflow-hidden m-4 w-80 relative">
         {delCover && (<div className='bg-black/[0.6] z-10 h-full w-full absolute flex flex-col items-center justify-center gap-5'>
           <div className='text-white text-4xl'>Are You Sure?</div>
