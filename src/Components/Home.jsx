@@ -101,14 +101,13 @@ const Home = () => {
       </div>
   
 
-
+       {/* //hotelgrid */}
 
       <section className='m-5 bg-slate-100  rounded-xl p-5'>
       <div className='mt-10 mb-10 flex flex-col justify-center items-center'>
           <p className='text-3xl text-blue-800 font-semibold '>Below are popular examples of where to display your <span className='text-teal-400 font-bold'>QR codes:</span> </p>
-         
 
-          <div className='grid grid-cols-2 sm:grid-cols-3 gap-8 sm:gap-36 text-center py-8 px-12 sm:px-0 mt-5'>
+                 <div className='grid grid-cols-2 sm:grid-cols-3 gap-8 sm:gap-36 text-center py-8 px-12 sm:px-0 mt-5'>
             
           <div className='shadow-md shadow-gray-500 rounded-md duration-200 hover:scale-105'>
               <img className='rounded-md duration-200 hover:scale-105 h-56' src="/hotel1.jpg" alt="" />
@@ -152,15 +151,14 @@ const Home = () => {
                  <p className='text-teal-400 font-semibold py-4'>Shared by bellhops</p>
               </div>
           </div>
-  
-
-
-          
-
           </div>
-          
-      </div>
+           </div>
       </section>
+
+          {/* gridend */}
+
+
+          
 
       </div>
       
