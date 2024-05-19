@@ -42,9 +42,10 @@ const Home = () => {
   }, [img.length]);
 
   return (
-    <div className='flex flex-wrap h-[100vh] w-full items-center justify-evenly py-10'>
+    <div>
+    <div className='flex flex-wrap h-[100vh] w-full items-center justify-evenly '>
       <div className='flex justify-center items-center'>
-        <p className='text-5xl text-blue-800 font-semibold'>India's #1 <br /> End-to-End <br /> Digital Tipping Platform <br /> For<span className='text-white'>.</span>
+        <p className='text-6xl text-blue-800 pl-10 font-semibold'>India's <span className='text-green-400'>#1</span>  <br /> End-to-End <br /> Digital Tipping Platform <br /> For<span className='text-white'>.</span>
           <TypeAnimation
             className='text-green-400' sequence={[
               ' Hotels.', 3000,
@@ -66,7 +67,7 @@ const Home = () => {
 
       </div>
 
-      <div className='sm:w-full max-w-[500px] h-[400px] relative '>
+      <div className='sm:w-full mr-10 max-w-[500px] h-[400px] relative shadow-xl shadow-gray-700 '>
         <div
           style={{
             backgroundImage: `url(${img[currentSlide].url})`,
@@ -87,8 +88,84 @@ const Home = () => {
           </div>
         </div>
       </div>
+      </div>
+      <div className='flex justify-between items-center '>
+        <img className='hover:scale-110 duration-300 ml-56' src="/Revolutionizing-Tipping-Graphic.webp" alt="" />
+        <p className='text-3xl text-blue-800 font-semibold mr-56 pb-48'>No <span className='font-semibold'>App</span>  needed, Just your <span className='text-teal-400 font-bold'>Phone</span> </p>
+      </div>
 
-    </div>
+      <div className='flex  items-center'>
+        <p className='text-3xl text-blue-800 ml-56 font-semibold'>Fast & simple cashless tipping for <span className='text-teal-400 font-bold'>Hotels</span> <br /> <span className='text-xl'>Attract, retain, and motivate your hardworking <br /> staff while delighting your guests.</span> </p>
+        
+        <img src="/phone.jpg" className='h-96 ml-48 hover:scale-110 duration-300' alt="" />
+      </div>
+  
+
+
+
+      <section className='m-5 bg-slate-100  rounded-xl p-5'>
+      <div className='mt-10 mb-10 flex flex-col justify-center items-center'>
+          <p className='text-3xl text-blue-800 font-semibold '>Below are popular examples of where to display your <span className='text-teal-400 font-bold'>QR codes:</span> </p>
+         
+
+          <div className='grid grid-cols-2 sm:grid-cols-3 gap-8 sm:gap-36 text-center py-8 px-12 sm:px-0 mt-5'>
+            
+          <div className='shadow-md shadow-gray-500 rounded-md duration-200 hover:scale-105'>
+              <img className='rounded-md duration-200 hover:scale-105 h-56' src="/hotel1.jpg" alt="" />
+              <div className='flex items-center justify-center'>
+                 <p className='text-teal-400 font-semibold py-4'>Added to your concierge desk</p>
+              </div>
+          </div>
+
+          <div className='shadow-md shadow-gray-500 rounded-md duration-200 hover:scale-105'>
+              <img className='rounded-md duration-200 hover:scale-105 h-56' src="/hotel2.jpg" alt="" />
+              <div className='flex items-center justify-center'>
+                 <p className='text-teal-400 font-semibold py-4'>Placed after housekeeper visits</p>
+              </div>
+          </div>
+
+          
+          <div className='shadow-md shadow-gray-500 rounded-md duration-200 hover:scale-105'>
+              <img className='rounded-md duration-200 hover:scale-105 h-56' src="/hotel3.jpg" alt="" />
+              <div className='flex items-center justify-center'>
+                 <p className='text-teal-400 font-semibold py-4'>At each restaurant table</p>
+              </div>
+          </div>
+
+          <div className='shadow-md shadow-gray-500 rounded-md duration-200 hover:scale-105'>
+              <img className='rounded-md duration-200 hover:scale-105 h-56' src="/hotel4.jpg" alt="" />
+              <div className='flex items-center justify-center'>
+                 <p className='text-teal-400 font-semibold py-4'>Displayed throughout your hotel</p>
+              </div>
+          </div>
+
+          <div className='shadow-md shadow-gray-500 rounded-md duration-200 hover:scale-105'>
+              <img className='rounded-md duration-200 hover:scale-105 h-56' src="/hotel5.jpg" alt="" />
+              <div className='flex items-center justify-center'>
+                 <p className='text-teal-400 font-semibold py-4'>Placed next to valet stands</p>
+              </div>
+          </div>
+
+          <div className='shadow-md shadow-gray-500 rounded-md duration-200 hover:scale-105'>
+              <img className='rounded-md duration-200 hover:scale-105 h-56' src="/hotel6.jpg" alt="" />
+              <div className='flex items-center justify-center'>
+                 <p className='text-teal-400 font-semibold py-4'>Shared by bellhops</p>
+              </div>
+          </div>
+  
+
+
+          
+
+          </div>
+          
+      </div>
+      </section>
+
+      </div>
+      
+
+    
 
   )
 }
