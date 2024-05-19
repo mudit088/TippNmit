@@ -89,16 +89,17 @@ const Home = () => {
         </div>
       </div>
       </div>
+
       <div className='flex justify-between items-center '>
         <img className='hover:scale-110 duration-300 ml-56' src="/Revolutionizing-Tipping-Graphic.webp" alt="" />
         <p className='text-3xl text-blue-800 font-semibold mr-56 pb-48'>No <span className='font-semibold'>App</span>  needed, Just your <span className='text-teal-400 font-bold'>Phone</span> </p>
       </div>
 
-      <div className='flex  items-center mb-28'>
+      {/* <div className='flex  items-center mb-28'>
         <p className='text-3xl text-blue-800 ml-56 font-semibold'>Fast & simple cashless tipping for <span className='text-teal-400 font-bold'>Hotels</span> <br /> <span className='text-xl'>Attract, retain, and motivate your hardworking <br /> staff while delighting your guests.</span> </p>
         
         <img src="/phone.jpg" className='h-96 ml-48 hover:scale-110 duration-300' alt="" />
-      </div>
+      </div> */}
   
 
        {/* //hotelgrid */}
@@ -211,17 +212,16 @@ const Home = () => {
               </div>
           </div>
           </div>
-
-         
-
-          
-
-
-          </div>
+              </div>
           </section>
+
+
+                    
+
            </div>
 
       
+
       
 
     
