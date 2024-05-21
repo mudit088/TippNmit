@@ -67,7 +67,7 @@ const Home = () => {
 
       </div>
 
-      <div className='sm:w-full mr-10 max-w-[500px] h-[400px] relative shadow-xl shadow-gray-700 '>
+      <div className='sm:w-full mr-10 max-w-[500px] h-[400px] relative shadow-xl rounded-3xl shadow-gray-700 '>
         <div
           style={{
             backgroundImage: `url(${img[currentSlide].url})`,
