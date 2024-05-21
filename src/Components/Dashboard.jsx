@@ -60,7 +60,7 @@ const Dashboard = () => {
   const setQR = () => {
     const url = window.location.href;
     const nrwurl = url.substring(0, url.length - location.pathname.length);
-    const data = `${nrwurl}/client/tulsyanshubham`;
+    const data = `${nrwurl}/client/${mgr.username}`;
     if (data && canvasRef.current) {
       QRCode.toCanvas(canvasRef.current, data, {
         width: 200,

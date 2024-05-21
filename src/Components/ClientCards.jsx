@@ -34,10 +34,10 @@ export default function ClientCards({ employeeData }) {
             <p className="text-xl font-semibold">{name}</p>
             <p className="text-gray-700 mb-2">Employee Type: {employeetype}</p>
             <p className="text-gray-700 mb-2">Work Type: {worktype}</p>
-            <p className="text-gray-700 mb-2">Joining Date: {reqDate}</p>
-            <p className="text-gray-700 mb-2">Email: {email}</p>
+            {/* <p className="text-gray-700 mb-2">Joining Date: {reqDate}</p>
+            <p className="text-gray-700 mb-2">Email: {email}</p> */}
             <p className="text-gray-700 mb-2">UPI ID: {upiId}</p>
-            <a href={UPI} >UPI</a>
+            <a href={UPI} >Pay Tip</a>
           </div>
         </div>
       </div>
